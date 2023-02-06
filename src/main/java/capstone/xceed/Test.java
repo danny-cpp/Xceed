@@ -28,7 +28,7 @@ public class Test {
         System.out.println(prettyJsonString);
 
         // Send first message
-        dOut.writeByte(2);
+//        dOut.writeByte(2);
         dOut.writeUTF(content);
         dOut.flush(); // Send off the data
     }
