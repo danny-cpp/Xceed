@@ -1,4 +1,4 @@
-// A Java program for a Server
+package capstone.xceed.communication;// A Java program for a Server
 import capstone.xceed.message.XCMessage;
 
 import java.net.*;
@@ -19,34 +19,39 @@ public class Listener {
 
             //initialize socket and input stream
             Socket socket = server.accept();
-            System.out.println(components_name + "successfully connected");
+            System.out.println(components_name + " successfully connected");
 
             // takes input from the client socket
-            DataInputStream in = new DataInputStream(
-                    new BufferedInputStream(socket.getInputStream()));
-
+            // DataInputStream in = new DataInputStream(
+            //         new BufferedInputStream(socket.getInputStream()));
+            //
             String line;
             StringBuilder json_builder = new StringBuilder();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             // reads message from client until "Over" is sent
-            while (true) {
-                try {
-                    line = in.readUTF();
-                    json_builder.append(line);
-                }
-                catch(EOFException e) {
+            while ((line = reader.readLine()) != null) {
+
+                System.out.println(line);
+                json_builder.append(line);
+                System.out.println(line.length());
+
+
+                if (line.charAt(line.length() - 1) == '}') {
                     try {
                         XCMessage message = new XCMessage(json_builder.toString());
+                        System.out.println(json_builder.toString());
                     }
                     catch (Exception unparsable) {
                         System.out.println("A message received was unparsable: " + json_builder.toString());
+
                     }
                 }
             }
 
             // close connection
-            // socket.close();
-            // in.close();
+            socket.close();
+            reader.close();
         }
         catch(IOException i) {
             System.out.println("Connection with " + components_name + "is terminated because an exception occurs");
@@ -57,6 +62,6 @@ public class Listener {
     public static void main(String[] args) {
 
         List<XCMessage> tq = new ArrayList<>();
-        Listener listener = new Listener(65000, "abc", tq);
+        Listener listener = new Listener(64999, "abc", tq);
     }
 }
