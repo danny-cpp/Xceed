@@ -4,12 +4,15 @@ import capstone.xceed.message.XCMessage;
 import java.net.*;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+
 
 public class Listener {
 
     // constructor with port
-    public Listener(int port, String components_name, List<XCMessage> task_queue) {
+    public Listener(int port, String components_name, Deque<XCMessage> task_queue) {
         // starts server and waits for a connection
         try {
             ServerSocket server = new ServerSocket(port);
@@ -41,6 +44,13 @@ public class Listener {
                     try {
                         XCMessage message = new XCMessage(json_builder.toString());
                         System.out.println(json_builder.toString());
+                        //add to the task queue using synchronized
+                        synchronized (task_queue) {
+                            task_queue.add(message);
+                        }
+                        //clear the string builder
+                        json_builder.setLength(0);
+
                     }
                     catch (Exception unparsable) {
                         System.out.println("A message received was unparsable: " + json_builder.toString());
@@ -48,6 +58,7 @@ public class Listener {
                     }
                 }
             }
+
 
             // close connection
             socket.close();
@@ -61,7 +72,8 @@ public class Listener {
 
     public static void main(String[] args) {
 
-        List<XCMessage> tq = new ArrayList<>();
+        Deque<XCMessage> tq = new ArrayDeque<>(10);
+
         Listener listener = new Listener(64999, "abc", tq);
     }
 }

@@ -61,4 +61,9 @@ public class XCMessage {
 
         return new JSONObject(json_map);
     }
+
+    public String getAPI() {
+        //return the api_call
+        return api_call;
+    }
 }

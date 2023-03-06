@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Test {
 
     public static void main(String[] args) throws IOException {
-        Socket socket = new Socket("127.0.0.1", 64999); // Create and connect the socket
+        Socket socket = new Socket("127.0.0.1", 64998); // Create and connect the socket
         OutputStream outputStream = socket.getOutputStream();
 
         XCMessage m1 = new XCMessage(1, 2, "T1", API.T1.REQUEST_HANDSHAKE.name());
@@ -36,8 +36,30 @@ public class Test {
         outputStream.write("\n".getBytes());
         outputStream.flush(); // Send off the data
 
-        Scanner input = new Scanner(System.in);
-        input.next();
+//        Scanner input = new Scanner(System.in);
+//        input.next();
+
+
+    //send a another message, this time is receiver_id
+        XCMessage m2 = new XCMessage(1, 2, "T1", API.T1.RECEIVED_ID.name());
+        String content2 = m2.getJSON().toString();
+
+        Gson gson2 = new GsonBuilder().setPrettyPrinting().create();
+        JsonParser jp2 = new JsonParser();
+        JsonElement je2 = jp2.parse(content2);
+        String prettyJsonString2 = gson2.toJson(je2);
+
+        System.out.println(prettyJsonString2);
+        System.out.println(content2);
+
+        // Send first message
+        // dOut.writeByte(0);
+        outputStream.write(content2.getBytes());
+        outputStream.write("\n".getBytes());
+        outputStream.flush(); // Send off the data
+
+        // Close the socket
+//        socket.close();
     }
 
 }
