@@ -2,6 +2,7 @@ package capstone.xceed.message;
 
 
 import capstone.xceed.api.API;
+import org.apache.kafka.common.protocol.types.Field;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
@@ -22,13 +23,22 @@ public class XCMessage {
 
     public XCMessage(String json_string) throws Exception {
         Type mapType = new TypeToken<Map<String, Map>>(){}.getType();
-        Map<String, String[]> json_obj = new Gson().fromJson(json_string, mapType);
+        Map<String, Object> json_obj = new Gson().fromJson(json_string, HashMap.class);
+
+
+
 
         try {
-            this.sender_id = Integer.parseInt((json_obj.get("sender_id"))[0]);
-            this.task_id = Integer.parseInt((json_obj.get("task_id"))[0]);
-            this.interface_type = (json_obj.get("interface_type"))[0];
-            this.api_call = (json_obj.get("api_call"))[0];
+
+            this.sender_id = Integer.parseInt((String)json_obj.get("sender_id"));
+            this.task_id = Integer.parseInt((String) json_obj.get("task_id"));
+            this.interface_type = (String) json_obj.get("interface_type");
+            this.api_call = (String) json_obj.get("api_call");
+
+//            this.sender_id = Integer.parseInt(((json_obj.get("sender_id"))[0]);
+//            this.task_id = Integer.parseInt((json_obj.get("task_id"))[0]);
+//            this.interface_type = (json_obj.get("interface_type"))[0];
+//            this.api_call = (json_obj.get("api_call"))[0];
         }
         catch (Exception e) {
             throw new Exception("Unparsable JSON string. Cannot create XCMessage");
