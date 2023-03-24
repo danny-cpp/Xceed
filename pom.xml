@@ -100,11 +100,13 @@
                         <goals>
                             <goal>java</goal>
                         </goals>
-                        <configuration>
-                            <mainClass>capstone.xceed.communication.Listener</mainClass>
-                        </configuration>
+
                     </execution>
+
                 </executions>
+                <configuration>
+                    <mainClass>capstone.xceed.CoreComplex</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

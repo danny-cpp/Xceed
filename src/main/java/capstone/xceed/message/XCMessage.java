@@ -20,12 +20,14 @@ public class XCMessage {
     int task_id;
     String interface_type;
     String api_call;
+    int payload_total_fragments;
+    int payload_frag_number;
+    int payload_size;
+    String payload_content;
 
     public XCMessage(String json_string) throws Exception {
         Type mapType = new TypeToken<Map<String, Map>>(){}.getType();
         Map<String, Object> json_obj = new Gson().fromJson(json_string, HashMap.class);
-
-
 
 
         try {
@@ -34,6 +36,10 @@ public class XCMessage {
             this.task_id = Integer.parseInt((String) json_obj.get("task_id"));
             this.interface_type = (String) json_obj.get("interface_type");
             this.api_call = (String) json_obj.get("api_call");
+            this.payload_total_fragments = Integer.parseInt((String)json_obj.get("payload_total_fragments"));
+            this.payload_frag_number = Integer.parseInt((String)json_obj.get("payload_frag_number"));
+            this.payload_size = Integer.parseInt((String)json_obj.get("payload_size"));
+            this.payload_content = (String) json_obj.get("payload_content");
 
 //            this.sender_id = Integer.parseInt(((json_obj.get("sender_id"))[0]);
 //            this.task_id = Integer.parseInt((json_obj.get("task_id"))[0]);
@@ -45,19 +51,30 @@ public class XCMessage {
         }
     }
 
-    public XCMessage(int sender_id, int task_id, String interface_type, String api_call) {
+    public XCMessage(int sender_id, int task_id, String interface_type, String api_call, int payload_total_fragments,
+                     int payload_frag_number,
+                     int payload_size,
+                     String payload_content) {
         this.sender_id = sender_id;
         this.task_id = task_id;
         this.interface_type = interface_type;
         this.api_call = api_call;
+        this.payload_total_fragments = payload_total_fragments;
+        this.payload_frag_number = payload_frag_number;
+        this.payload_size = payload_size;
+        this.payload_content = payload_content;
     }
 
     public JSONObject getJSON() {
         Map<String, Object> json_map = new HashMap<>();
-        json_map.put("sender_id", Integer.toString(sender_id));
-        json_map.put("task_id", Integer.toString(task_id));
+        json_map.put("sender_id", sender_id);
+        json_map.put("task_id", task_id);
         json_map.put("interface_type", interface_type);
         json_map.put("api_call", api_call);
+        json_map.put("payload_total_fragments", payload_total_fragments);
+        json_map.put("payload_frag_number", payload_frag_number);
+        json_map.put("payload_size", payload_size);
+        json_map.put("payload_content", payload_content);
 
         return new JSONObject(json_map);
     }

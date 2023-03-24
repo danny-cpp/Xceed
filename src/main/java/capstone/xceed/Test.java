@@ -19,7 +19,8 @@ public class Test {
         Socket socket = new Socket("127.0.0.1", 64998); // Create and connect the socket
         OutputStream outputStream = socket.getOutputStream();
 
-        XCMessage m1 = new XCMessage(1, 2, "T1", API.T1.REQUEST_HANDSHAKE.name());
+        String to_be_encrypted = "To be or not to be";
+        XCMessage m1 = new XCMessage(1, 2, "T1", API.T1.RECEIVED_ID.name(), 1, 0, to_be_encrypted.length(), to_be_encrypted);
         String content = m1.getJSON().toString();
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -41,7 +42,7 @@ public class Test {
 
 
     //send a another message, this time is receiver_id
-        XCMessage m2 = new XCMessage(1, 2, "T1", API.T1.RECEIVED_ID.name());
+        XCMessage m2 = new XCMessage(1, 2, "T1", API.T1.RECEIVED_ID.name(), 1, 0, to_be_encrypted.length(), to_be_encrypted);
         String content2 = m2.getJSON().toString();
 
         Gson gson2 = new GsonBuilder().setPrettyPrinting().create();

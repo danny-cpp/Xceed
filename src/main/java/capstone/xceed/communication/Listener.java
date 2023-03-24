@@ -1,4 +1,5 @@
 package capstone.xceed.communication;// A Java program for a Server
+import capstone.xceed.api.API;
 import capstone.xceed.message.XCMessage;
 
 import java.net.*;
@@ -23,6 +24,14 @@ public class Listener {
             //initialize socket and input stream
             Socket socket = server.accept();
             System.out.println(components_name + " successfully connected");
+
+            OutputStream outputStream = socket.getOutputStream();
+            String to_be_encrypted = "To be or not to be";
+            XCMessage m1 = new XCMessage(1, 2, "T1", API.T1.ENCRYPT.name(), 1, 0, to_be_encrypted.length(), to_be_encrypted);
+            String content = m1.getJSON().toString();
+            outputStream.write(content.getBytes());
+            outputStream.write("\n".getBytes());
+            outputStream.flush(); // Send off the data
 
             // takes input from the client socket
             // DataInputStream in = new DataInputStream(
