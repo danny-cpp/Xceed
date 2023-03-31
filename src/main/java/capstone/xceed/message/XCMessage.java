@@ -32,13 +32,13 @@ public class XCMessage {
 
         try {
 
-            this.sender_id = Integer.parseInt((String)json_obj.get("sender_id"));
-            this.task_id = Integer.parseInt((String) json_obj.get("task_id"));
+            this.sender_id = ((Double) json_obj.get("sender_id")).intValue();
+            this.task_id = ((Double) json_obj.get("task_id")).intValue();
             this.interface_type = (String) json_obj.get("interface_type");
             this.api_call = (String) json_obj.get("api_call");
-            this.payload_total_fragments = Integer.parseInt((String)json_obj.get("payload_total_fragments"));
-            this.payload_frag_number = Integer.parseInt((String)json_obj.get("payload_frag_number"));
-            this.payload_size = Integer.parseInt((String)json_obj.get("payload_size"));
+            this.payload_total_fragments = ((Double) json_obj.get("payload_total_fragments")).intValue();
+            this.payload_frag_number = ((Double) json_obj.get("payload_frag_number")).intValue();
+            this.payload_size = ((Double) json_obj.get("payload_size")).intValue();
             this.payload_content = (String) json_obj.get("payload_content");
 
 //            this.sender_id = Integer.parseInt(((json_obj.get("sender_id"))[0]);
@@ -82,5 +82,9 @@ public class XCMessage {
     public String getAPI() {
         //return the api_call
         return api_call;
+    }
+
+    public static void main(String[] args) throws Exception {
+        XCMessage m = new XCMessage("{\"sender_id\":0,\"task_id\":0,\"interface_type\":\"T1\",\"api_call\":\"SEND_ID\",\"payload_total_fragments\":1,\"payload_frag_number\":0,\"payload_size\":1,\"payload_content\":\"3003\"}");
     }
 }

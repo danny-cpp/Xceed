@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fbbc6aa-ca67-4956-ae65-fae9618732c0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Listener.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Xceed_war.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Xceed_war_exploded.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/capstone/xceed/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/capstone/xceed/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/capstone/xceed/CoreComplex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/capstone/xceed/CoreComplex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/capstone/xceed/communication/Listener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/capstone/xceed/communication/Listener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/capstone/xceed/message/XCMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/capstone/xceed/message/XCMessage.java" afterDir="false" />
     </list>
@@ -20,6 +14,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -96,7 +97,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="XCMessage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="capstone.xceed.message.XCMessage" />
+      <module name="Xceed" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="capstone.xceed.message.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
+      <item itemvalue="Application.XCMessage" />
       <item itemvalue="Application.Listener" />
       <item itemvalue="Application.Test" />
       <item itemvalue="Application.CoreComplex" />
@@ -104,6 +119,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.CoreComplex" />
+        <item itemvalue="Application.XCMessage" />
         <item itemvalue="Application.Listener" />
         <item itemvalue="Application.Test" />
       </list>
@@ -120,11 +136,95 @@
       <workItem from="1678419143644" duration="91000" />
       <workItem from="1678426817788" duration="604000" />
       <workItem from="1679371443916" duration="1547000" />
-      <workItem from="1679621949759" duration="10169000" />
+      <workItem from="1679621949759" duration="10282000" />
+      <workItem from="1680053463465" duration="5127000" />
+      <workItem from="1680140887046" duration="5546000" />
+      <workItem from="1680226159479" duration="11929000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/communication/Listener.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/communication/Listener.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/communication/Listener.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/communication/Listener.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/CoreComplex.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/CoreComplex.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/message/XCMessage.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/message/XCMessage.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/message/XCMessage.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/message/XCMessage.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/message/XCMessage.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/message/XCMessage.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/message/XCMessage.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/message/XCMessage.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/capstone/xceed/message/XCMessage.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
