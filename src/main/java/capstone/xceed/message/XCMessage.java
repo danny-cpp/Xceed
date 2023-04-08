@@ -47,6 +47,7 @@ public class XCMessage {
 //            this.api_call = (json_obj.get("api_call"))[0];
         }
         catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("Unparsable JSON string. Cannot create XCMessage");
         }
     }
@@ -85,6 +86,6 @@ public class XCMessage {
     }
 
     public static void main(String[] args) throws Exception {
-        XCMessage m = new XCMessage("{\"sender_id\":0,\"task_id\":0,\"interface_type\":\"T1\",\"api_call\":\"SEND_ID\",\"payload_total_fragments\":1,\"payload_frag_number\":0,\"payload_size\":1,\"payload_content\":\"3003\"}");
+        XCMessage m = new XCMessage("{\"api_call\": \"ENCRYPT\", \"task_id\": 0, \"interface_type\": \"GI\", \"sender_id\": 0, \"payload_total_fragments\": 1, \"payload_fragment_number\": 1, \"payload_size\": 16, \"payload_content\": \"NH0icEQ5R3d3VA==\"}");
     }
 }
