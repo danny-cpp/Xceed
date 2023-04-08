@@ -57,6 +57,7 @@ public class Listener <E extends BlockingDeque<XCMessage>> {
 
                     try {
                         String temp = to_be_sent.getJSON().toString();
+                        System.out.println(temp);
                         output.write(temp.getBytes());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -94,11 +95,12 @@ public class Listener <E extends BlockingDeque<XCMessage>> {
                 }
             }
 
-            writer.join();
 
+            writer.join();
             // close connection
             socket.close();
             reader.close();
+
         }
         catch(IOException i) {
             System.out.println("Connection with " + components_name + "is terminated because an exception occurs");

@@ -40,6 +40,8 @@ public class CoreComplex {
                     pipe_created);
         });
 
+
+
         connectionCLI.start();
         connectionNodeE.start();
 
@@ -59,42 +61,44 @@ public class CoreComplex {
             System.out.println("Handshaking sequence finished successfully");
         }
 
+        Thread forward_to_nodeE = new Thread(() -> {
+            while (true) {
+                System.out.println("waiting message from frontend");
+                try {
+                    XCMessage message = from_front_end_queue.take();
+                    System.out.println("Sending message to nodeE");
+                    System.out.println(message.getJSON().toString());
+                    to_nodeE_queue.put(message);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-        // while (true) {
-        //     synchronized (to_nodeE_queue) {
-        //         if (!to_nodeE_queue.isEmpty()) {
-        //             XCMessage message = to_nodeE_queue.pop();
-        //             System.out.println(message.getJSON().toString());
-        //             //if the message is a handshake message
-        //             //then we sleep for 3 second to mimic the behaviour of the task queue
-        //
-        //
-        //             if (message.getAPI().equals(API.T1.REQUEST_HANDSHAKE.name())) {
-        //                 //print message the handshake message is received
-        //                 System.out.println("Handshake message received, need 3 seconds to compelete");
-        //                 try {
-        //                     sleep(3000);
-        //
-        //                 } catch (InterruptedException e) {
-        //                     e.printStackTrace();
-        //                 }
-        //             }
-        //             //else if the message is recieved_id, then slerp for 5 seconds
-        //             else if (message.getAPI().equals(API.T1.RECEIVED_ID.name())) {
-        //                 //print message the received_id is received
-        //                 System.out.println("Received ID message received need 5 seconds to compelete");
-        //                 try {
-        //                     sleep(5000);
-        //                 } catch (InterruptedException e) {
-        //                     e.printStackTrace();
-        //                 }
-        //             }
-        //         }
-        //     }
-        //
-        // }
-       connectionCLI.join();
-       connectionNodeE.join();
+            }
+        });
+
+        Thread forward_to_frontend = new Thread(() -> {
+            while (true) {
+                try {
+                    XCMessage message = from_nodeE_queue.take();
+                    to_front_end_queue.put(message);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        forward_to_nodeE.start();
+        forward_to_frontend.start();
+
+        while (true) {
+            System.out.println("Waiting for message SLEEPing");
+            sleep(10000);
+        }
+
+//        connectionCLI.join();
+//        connectionNodeE.join();
+//        forward_to_nodeE.join();
+//        forward_to_frontend.join();
 
     }
 
