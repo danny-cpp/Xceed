@@ -50,9 +50,9 @@ public class CoreComplex {
         System.out.println("Pipe created successfully");
 
         StringBuilder seed = new StringBuilder();
-        seed.append("a".repeat(BLOCK_SIZE));
+        seed.append("a".repeat(BLOCK_SIZE * 2));
         // Initiate handshaking with nodeE
-        to_nodeE_queue.put(new XCMessage(0, 0, "T1", "REQUEST_HANDSHAKE", 1, 0, BLOCK_SIZE, ""));
+        to_nodeE_queue.put(new XCMessage(0, 0, "T1", "REQUEST_HANDSHAKE", 1, 0, 0, " "));
         if (!from_nodeE_queue.take().getJSON().get("api_call").equals("SEND_ID")) {
             System.out.println("Handshaking sequence failed");
         }
@@ -89,11 +89,6 @@ public class CoreComplex {
 
         forward_to_nodeE.start();
         forward_to_frontend.start();
-
-        while (true) {
-            System.out.println("Waiting for message SLEEPing");
-            sleep(10000);
-        }
 
 //        connectionCLI.join();
 //        connectionNodeE.join();
